@@ -55,8 +55,8 @@ export class UsersPage {
 
   public async updateUser(currentUserEmail: string, newUser: IUser): Promise<void> {
     const userCard = await this.searchUser(currentUserEmail);
-    await userCard.locator('[data-toggle=dropdown]').click();
-    await userCard.locator('.edit-user').click();
+    await userCard.locator('[data-toggle=dropdown]').click(); // можно добавить локатор для открытия дропдауна действий
+    await userCard.locator('.edit-user').click(); // можно добавить локатор для редактирования
     await this.fillUserForm(newUser);
     await this.submitFormButton.click();
   }
@@ -64,7 +64,7 @@ export class UsersPage {
   public async deleteUser(currentUserEmail: string): Promise<void> {
     const userCard = await this.searchUser(currentUserEmail);
     await userCard.locator('[data-toggle=dropdown]').click();
-    await userCard.locator('.delete-user').click();
+    await userCard.locator('.delete-user').click(); // можно добавить локатор для удаления
     await this.consedentToDeletion.click();
   }
 }
